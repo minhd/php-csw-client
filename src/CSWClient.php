@@ -4,6 +4,7 @@ namespace MinhD\CSWClient;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
+use MinhD\CSWClient\Request\DescribeRecord;
 use MinhD\CSWClient\Request\GetCapabilities;
 use MinhD\CSWClient\Request\GetRecordById;
 use MinhD\CSWClient\Request\GetRecords;
@@ -51,6 +52,15 @@ class CSWClient
     public function getRecords($options = [])
     {
         return $this->send(new GetRecords($options));
+    }
+
+    /**
+     * @param array $typeNames
+     * @return CSWResponse
+     */
+    public function describeRecord($typeNames = [])
+    {
+        return $this->send(new DescribeRecord($typeNames));
     }
 
     /**

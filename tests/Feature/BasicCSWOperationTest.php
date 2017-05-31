@@ -177,6 +177,15 @@ class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($numMatch, count($sxml->xpath("//csw:BriefRecord/dc:identifier")));
     }
 
+    /** @test **/
+    public function it_should_describe_records()
+    {
+        $result = $this->client->describeRecord();
+        $sxml = XML::getSXML($result->asXML(), ['csw', 'dc']);
+
+        $this->assertEquals(1, count($sxml->xpath('//csw:DescribeRecordResponse')));
+        $this->assertGreaterThanOrEqual(1, count($sxml->xpath('//csw:SchemaComponent')));
+    }
 
     public function setUp()
     {
