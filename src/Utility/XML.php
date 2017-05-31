@@ -3,6 +3,7 @@
 
 namespace MinhD\CSWClient\Utility;
 
+use Sabre\Xml\Service;
 
 class XML
 {
@@ -45,5 +46,14 @@ class XML
         }
 
         return $namespaces[$ns];
+    }
+
+    public static function CSWRequestWriter()
+    {
+        $service = new Service();
+        $service->namespaceMap = [
+            'http://www.opengis.net/cat/csw/2.0.2' => 'csw'
+        ];
+        return $service;
     }
 }

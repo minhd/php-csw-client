@@ -3,6 +3,7 @@
 namespace MinhD\CSWClient;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 use MinhD\CSWClient\Request\GetCapabilities;
 use MinhD\CSWClient\Request\GetRecordById;
 
@@ -29,14 +30,25 @@ class CSWClient
      */
     public function getCapabilities()
     {
-        $request = new GetCapabilities();
-        $result = $this->webClient->send($request);
-        return new CSWResponse($result);
+        return $this->send(new GetCapabilities());
     }
 
+    /**
+     * @param $id
+     * @param array $options
+     * @return CSWResponse
+     */
     public function getRecordByID($id, $options = [])
     {
-        $request = new GetRecordById($id, $options);
+        return $this->send(new GetRecordById($id, $options));
+    }
+
+    /**
+     * @param Request $request
+     * @return CSWResponse
+     */
+    public function send(Request $request)
+    {
         $result = $this->webClient->send($request);
         return new CSWResponse($result);
     }
