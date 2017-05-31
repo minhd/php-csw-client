@@ -59,5 +59,4 @@ class CSWResponse
         $service = new XmlService();
         return $service->parse($this->asString());
     }
-
 }

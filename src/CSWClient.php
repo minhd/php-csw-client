@@ -3,6 +3,8 @@
 namespace MinhD\CSWClient;
 
 use GuzzleHttp\Client;
+use MinhD\CSWClient\Request\GetCapabilities;
+use MinhD\CSWClient\Request\GetRecordById;
 
 class CSWClient
 {
@@ -27,38 +29,15 @@ class CSWClient
      */
     public function getCapabilities()
     {
-        $result = $this->webClient->request('POST', '', [
-            'headers' => [
-                'Content-Type' => 'application/xml',
-                'Accept' => 'application/xml'
-            ],
-            'body' => '<?xml version="1.0" encoding="UTF-8"?>
-<csw:GetCapabilities service="CSW" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2">
-    <ows:AcceptVersions xmlns:ows="http://www.opengis.net/ows">
-        <ows:Version>2.0.2</ows:Version>
-    </ows:AcceptVersions>
-    <ows:AcceptFormats xmlns:ows="http://www.opengis.net/ows">
-        <ows:OutputFormat>application/xml</ows:OutputFormat>
-    </ows:AcceptFormats>
-</csw:GetCapabilities>
-            ']);
+        $request = new GetCapabilities();
+        $result = $this->webClient->send($request);
         return new CSWResponse($result);
     }
 
-    public function getRecordByID($id, $options)
+    public function getRecordByID($id, $options = [])
     {
-        $request = new Request\GetRecordById();
-        $result = $this->webClient->request('POST', '', [
-            'headers' => [
-                'Content-Type' => 'application/xml',
-                'Accept' => 'application/xml'
-            ],
-            'body' => '<?xml version="1.0" encoding="UTF-8"?>
-<csw:GetRecordById xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" service="CSW" version="2.0.2" outputSchema="http://www.isotc211.org/2005/gmd">
-  <csw:Id>'.$id.'</csw:Id>
-  <csw:ElementSetName>full</csw:ElementSetName>
-</csw:GetRecordById>
-            ']);
+        $request = new GetRecordById($id, $options);
+        $result = $this->webClient->send($request);
         return new CSWResponse($result);
     }
 }
