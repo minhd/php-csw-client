@@ -44,4 +44,21 @@ class CSWClient
             ']);
         return new CSWResponse($result);
     }
+
+    public function getRecordByID($id, $options)
+    {
+        $request = new Request\GetRecordById();
+        $result = $this->webClient->request('POST', '', [
+            'headers' => [
+                'Content-Type' => 'application/xml',
+                'Accept' => 'application/xml'
+            ],
+            'body' => '<?xml version="1.0" encoding="UTF-8"?>
+<csw:GetRecordById xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" service="CSW" version="2.0.2" outputSchema="http://www.isotc211.org/2005/gmd">
+  <csw:Id>'.$id.'</csw:Id>
+  <csw:ElementSetName>full</csw:ElementSetName>
+</csw:GetRecordById>
+            ']);
+        return new CSWResponse($result);
+    }
 }

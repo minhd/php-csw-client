@@ -1,6 +1,8 @@
 <?php
 
-namespace MinhD\CSWClient;
+namespace MinhD\CSWClient\Unit;
+
+use MinhD\CSWClient\CSWClient;
 
 class CSWClientUnitTest extends \PHPUnit_Framework_TestCase
 {
