@@ -14,6 +14,8 @@ class XML
         'gmd' => "http://www.isotc211.org/2005/gmd",
         "gmo" => "http://www.isotc211.org/2005/gmo",
         "gco" => "http://www.isotc211.org/2005/gco",
+        "dc" => "http://purl.org/dc/elements/1.1/",
+        "gml" => "http://www.opengis.net/gml"
     ];
 
     public static function getSXML($payload, $xpathNS = [])
@@ -54,7 +56,8 @@ class XML
         $service = new Service();
         $service->namespaceMap = [
             XML::getNSURL('csw') => 'csw',
-            XML::getNSURL('ogc') => 'ogc'
+            XML::getNSURL('ogc') => 'ogc',
+            XML::getNSURL('gml') => 'gml'
         ];
         return $service;
     }

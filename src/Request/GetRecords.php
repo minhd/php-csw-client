@@ -57,9 +57,7 @@ class GetRecords extends CSWRequest
 
                 $writer->writeElement("{$cswNS}ElementSetName", $options['query']['ElementSetName']);
 
-                if (array_key_exists('RawConstraints', $options['query'])
-                    && $options['query']['RawConstraints'] === null
-                ) {
+                if (!array_key_exists('RawConstraints', $options['query']) || $options['query']['RawConstraints'] === null) {
                     $writer->endElement();
                     return;
                 }

@@ -92,6 +92,75 @@ class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(15, count($sxml->xpath("//csw:Record")));
     }
 
+    /** @test **/
+    public function it_should_get_records_based_on_constraints()
+    {
+        $result = $this->client->getRecords([
+            'service' => 'CSW',
+            'outputSchema' => XML::getNSURL('csw'),
+            'query' => [
+                'ElementSetName' => 'full',
+                'RawConstraints' => '<csw:Constraint version="1.1.0">
+      <ogc:Filter>
+        <ogc:PropertyIsEqualTo>
+          <ogc:PropertyName>csw:title</ogc:PropertyName>
+          <ogc:Literal>Gilbert</ogc:Literal>
+        </ogc:PropertyIsEqualTo>
+      </ogc:Filter>
+    </csw:Constraint>'
+            ]
+        ]);
+
+        $sxml = XML::getSXML($result->asXML(), ['csw', 'dc']);
+        $this->assertEquals(1, count($sxml->xpath('//csw:SearchResults')));
+        $searchResult = $sxml->xpath('//csw:SearchResults')[0];
+
+        // must match some records
+        $numMatch = (int) $searchResult['numberOfRecordsReturned'];
+        $this->assertGreaterThan(0, $numMatch);
+
+        // same set returned
+        $this->assertEquals($numMatch, count($sxml->xpath("//csw:Record")));
+        $this->assertEquals($numMatch, count($sxml->xpath("//csw:Record/dc:identifier")));
+    }
+
+    /** @test **/
+    public function it_should_search_brief_record_in_a_bounding_box()
+    {
+        $result = $this->client->getRecords([
+            'service' => 'CSW',
+            'outputSchema' => XML::getNSURL('csw'),
+            'query' => [
+                'ElementSetName' => 'brief',
+                'RawConstraints' => '<csw:Constraint version="1.1.0">
+      <ogc:Filter>
+        <ogc:BBOX>
+          <ogc:PropertyName>ows:BoundingBox</ogc:PropertyName>
+          <gml:Envelope>
+            <gml:lowerCorner>47 -5</gml:lowerCorner>
+            <gml:upperCorner>55 20</gml:upperCorner>
+          </gml:Envelope>
+        </ogc:BBOX>
+      </ogc:Filter>
+    </csw:Constraint>'
+            ]
+        ]);
+
+
+        $sxml = XML::getSXML($result->asXML(), ['csw', 'dc']);
+        $this->assertEquals(1, count($sxml->xpath('//csw:SearchResults')));
+        $searchResult = $sxml->xpath('//csw:SearchResults')[0];
+
+        // must match some records
+        $numMatch = (int) $searchResult['numberOfRecordsReturned'];
+        $this->assertGreaterThan(0, $numMatch);
+
+        // same set returned
+        $this->assertEquals($numMatch, count($sxml->xpath("//csw:BriefRecord")));
+        $this->assertEquals($numMatch, count($sxml->xpath("//csw:BriefRecord/dc:identifier")));
+    }
+
+
     public function setUp()
     {
         $this->client = new CSWClient($this->url);
