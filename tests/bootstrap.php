@@ -6,7 +6,7 @@ if (!function_exists('dd')) {
     function dd()
     {
         array_map(function ($x) {
-            var_dump($x);
+            print_r($x);
         }, func_get_args());
         die;
     }

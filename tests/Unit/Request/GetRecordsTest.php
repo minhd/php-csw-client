@@ -61,4 +61,32 @@ class GetRecordsTest extends \PHPUnit_Framework_TestCase
         $elem = $sxml->xpath("//csw:GetRecords/csw:Query/csw:ElementSetName")[0];
         $this->assertEquals((string) $elem, $expected['query']['ElementSetName']);
     }
+
+    /** @test **/
+    public function it_should_construct_body_with_raw_contraints()
+    {
+        $expected = [
+            'service' => 'CSW',
+            'startPosition' => 1,
+            'outputSchema' => XML::getNSURL('csw'),
+            'query' => [
+                'ElementSetName' => 'full',
+                'RawConstraints' => '<csw:Constraint version="1.1.0">
+      <ogc:Filter>
+        <ogc:PropertyIsEqualTo>
+          <ogc:PropertyName>csw:title</ogc:PropertyName>
+          <ogc:Literal>Gilbert</ogc:Literal>
+        </ogc:PropertyIsEqualTo>
+      </ogc:Filter>
+    </csw:Constraint>'
+            ]
+        ];
+
+        $request = new GetRecords($expected);
+        $sxml = XML::getSXML($request->getBody(), ['csw', 'ogc']);
+
+        $this->assertEquals(1, count($sxml->xpath('//ogc:Literal')));
+        $this->assertEquals(1, count($sxml->xpath('//ogc:PropertyName')));
+        $this->assertEquals(1, count($sxml->xpath('//ogc:PropertyIsEqualTo')));
+    }
 }

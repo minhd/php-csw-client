@@ -10,6 +10,7 @@ class XML
     public static $namespaces = [
         'csw' => "http://www.opengis.net/cat/csw/2.0.2",
         "ows" => "http://www.opengis.net/ows",
+        "ogc" => "http://www.opengis.net/ogc",
         'gmd' => "http://www.isotc211.org/2005/gmd",
         "gmo" => "http://www.isotc211.org/2005/gmo",
         "gco" => "http://www.isotc211.org/2005/gco",
@@ -52,7 +53,8 @@ class XML
     {
         $service = new Service();
         $service->namespaceMap = [
-            'http://www.opengis.net/cat/csw/2.0.2' => 'csw'
+            XML::getNSURL('csw') => 'csw',
+            XML::getNSURL('ogc') => 'ogc'
         ];
         return $service;
     }

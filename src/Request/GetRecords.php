@@ -17,7 +17,8 @@ class GetRecords extends CSWRequest
         'resultType' => "results",
         'outputFormat' => 'application/xml',
         'query' => [
-            'ElementSetName' => 'full'
+            'ElementSetName' => 'full',
+            'RawConstraints' => null
         ]
     ];
 
@@ -50,9 +51,23 @@ class GetRecords extends CSWRequest
                     }
                     $writer->writeAttribute($key, $value);
                 }
-                $writer->writeElement("{$cswNS}Query", [
-                    "{$cswNS}ElementSetName" => $options['query']['ElementSetName']
-                ]);
+
+                $writer->startElement("{$cswNS}Query");
+                $writer->writeAttribute("typeNames", 'csw:Record');
+
+                $writer->writeElement("{$cswNS}ElementSetName", $options['query']['ElementSetName']);
+
+                if (array_key_exists('RawConstraints', $options['query'])
+                    && $options['query']['RawConstraints'] === null
+                ) {
+                    $writer->endElement();
+                    return;
+                }
+
+                //write RawConstraints
+                $writer->writeRaw($options['query']['RawConstraints']);
+
+                $writer->endElement();
             }
         );
 
