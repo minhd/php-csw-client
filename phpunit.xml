@@ -1,0 +1,22 @@
+<phpunit bootstrap="tests/bootstrap.php">
+    <testsuites>
+        <testsuite name="unit">
+            <directory suffix="Test.php">tests/unit/</directory>
+        </testsuite>
+        <testsuite name="feature">
+            <directory suffix="Test.php">tests/feature/</directory>
+        </testsuite>
+    </testsuites>
+
+    <logging>
+        <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
+        <log type="coverage-html" target="build/coverage"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
