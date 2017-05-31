@@ -3,17 +3,20 @@
 namespace MinhD\CSWClient\Feature;
 
 use MinhD\CSWClient\CSWClient;
+use MinhD\CSWClient\Request\CSWRequest;
 use MinhD\CSWClient\Utility\XML;
 
 class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
 {
     protected $url = "http://ecat.ga.gov.au/geonetwork/srv/eng/csw";
 
+    /** @var CSWClient */
+    protected $client;
+
     /** @test */
     public function it_should_get_response_in_multiple_formats()
     {
-        $client = new CSWClient($this->url);
-        $result = $client->getCapabilities();
+        $result = $this->client->getCapabilities();
 
         $this->assertEquals(200, $result->httpCode());
         $this->assertNotEmpty($result->asString());
@@ -25,8 +28,8 @@ class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
     /** @test * */
     public function it_should_get_capabilities()
     {
-        $client = new CSWClient($this->url);
-        $result = $client->getCapabilities();
+        $result = $this->client->getCapabilities();
+
         $this->assertNotEmpty($result->asString());
 
         $sxml = $result->asXML();
@@ -47,8 +50,7 @@ class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
     /** @test * */
     public function it_should_get_record_by_id()
     {
-        $client = new CSWClient($this->url);
-        $result = $client->getRecordByID(
+        $result = $this->client->getRecordByID(
             "1c2403c3-44f6-4421-ba7f-dc48a1c5e5ee",
             [
                 "outputSchema" => "http://www.isotc211.org/2005/gmd",
@@ -73,5 +75,25 @@ class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
             "1c2403c3-44f6-4421-ba7f-dc48a1c5e5ee",
             (string)$sxml->xpath("//gmd:fileIdentifier/gco:CharacterString")[0]
         );
+    }
+
+    /** @test **/
+    public function it_should_get_all_records()
+    {
+        $result = $this->client->getRecords();
+        $sxml = XML::getSXML($result->asXML(), ['csw']);
+
+        $this->assertEquals(1, count($sxml->xpath('//csw:SearchResults')));
+
+        $searchResult = $sxml->xpath('//csw:SearchResults')[0];
+        $this->assertGreaterThan(1000, $searchResult['numberOfRecordsMatched']);
+        $this->assertEquals(15, (int) $searchResult['numberOfRecordsReturned']);
+
+        $this->assertEquals(15, count($sxml->xpath("//csw:Record")));
+    }
+
+    public function setUp()
+    {
+        $this->client = new CSWClient($this->url);
     }
 }

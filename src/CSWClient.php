@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 use MinhD\CSWClient\Request\GetCapabilities;
 use MinhD\CSWClient\Request\GetRecordById;
+use MinhD\CSWClient\Request\GetRecords;
 
 class CSWClient
 {
@@ -41,6 +42,15 @@ class CSWClient
     public function getRecordByID($id, $options = [])
     {
         return $this->send(new GetRecordById($id, $options));
+    }
+
+    /**
+     * @param array $options
+     * @return CSWResponse
+     */
+    public function getRecords($options = [])
+    {
+        return $this->send(new GetRecords($options));
     }
 
     /**
