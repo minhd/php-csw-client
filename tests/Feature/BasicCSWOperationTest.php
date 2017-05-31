@@ -48,7 +48,7 @@ class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test * */
-    public function it_should_get_record_by_id()
+    public function it_should_get_record_by_id_gmd()
     {
         $result = $this->client->getRecordByID(
             "1c2403c3-44f6-4421-ba7f-dc48a1c5e5ee",
@@ -75,6 +75,23 @@ class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
             "1c2403c3-44f6-4421-ba7f-dc48a1c5e5ee",
             (string)$sxml->xpath("//gmd:fileIdentifier/gco:CharacterString")[0]
         );
+    }
+
+    /** @test * */
+    public function it_should_get_record_by_id_default_settings_csw()
+    {
+        $result = $this->client->getRecordByID(
+            "1c2403c3-44f6-4421-ba7f-dc48a1c5e5ee"
+        );
+
+        $sxml = $result->asXML();
+        $sxml = XML::getSXML($sxml, ['csw']);
+
+        $this->assertEquals(
+            1,
+            count($sxml->xpath("//csw:GetRecordByIdResponse"))
+        );
+        $this->assertEquals(1, count($sxml->xpath("//csw:Record")));
     }
 
     /** @test **/

@@ -4,6 +4,7 @@
 namespace MinhD\CSWClient\Request;
 
 use GuzzleHttp\Psr7\Request;
+use MinhD\CSWClient\Utility\XML;
 use Sabre\Xml\Service;
 use Sabre\Xml\Writer;
 
@@ -29,11 +30,7 @@ class GetRecordById extends CSWRequest
 
     public function getBody()
     {
-        $service = new Service();
-
-        $service->namespaceMap = [
-            'http://www.opengis.net/cat/csw/2.0.2' => 'csw',
-        ];
+        $service = XML::CSWRequestWriter();
 
         $options = $this->options;
 

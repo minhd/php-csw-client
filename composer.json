@@ -51,6 +51,9 @@
             "phpcs --report=checkstyle --report-file=./build/logs/checkstyle.xml --standard=phpcs.xml src",
             "apigen generate -s src -d build/api",
             "@test"
+        ],
+        "view-coverage": [
+            "open build/coverage/index.html"
         ]
     },
     "extra": {

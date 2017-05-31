@@ -3,7 +3,6 @@
 
 namespace MinhD\CSWClient\Request;
 
-
 use MinhD\CSWClient\Utility\XML;
 use Sabre\Xml\Writer;
 
@@ -45,7 +44,7 @@ class GetRecords extends CSWRequest
         $doc = $service->write(
             "{$cswNS}GetRecords",
             function (Writer $writer) use ($cswNS, $options) {
-                foreach ($options as $key=>$value) {
+                foreach ($options as $key => $value) {
                     if (is_array($value)) {
                         continue;
                     }
