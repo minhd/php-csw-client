@@ -3,8 +3,9 @@
 namespace MinhD\CSWClient\Unit;
 
 use MinhD\CSWClient\CSWClient;
+use MinhD\CSWClient\Exception\CSWException;
 
-class CSWClientUnitTest extends \PHPUnit_Framework_TestCase
+class CSWClientTest extends \PHPUnit_Framework_TestCase
 {
     protected $url = "http://ecat.ga.gov.au/geonetwork/srv/eng/csw";
 

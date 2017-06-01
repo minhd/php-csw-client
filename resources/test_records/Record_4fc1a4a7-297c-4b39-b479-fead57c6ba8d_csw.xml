@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csw:Record>
+    <dc:identifier xmlns:dc="http://purl.org/dc/elements/1.1/">
+        4fc1a4a7-297c-4b39-b479-fead57c6ba8d
+    </dc:identifier>
+    <dc:source xmlns:dc="http://purl.org/dc/elements/1.1/">107043</dc:source>
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">Radiometric Thorium
+        Equivalent grid of Paterson Central, WA, 2005 survey
+    </dc:title>
+    <dc:type xmlns:dc="http://purl.org/dc/elements/1.1/">dataset</dc:type>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">radiometrics
+    </dc:subject>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">NCI</dc:subject>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">AU</dc:subject>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">Thorium</dc:subject>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">Airborne Digital
+        Data
+    </dc:subject>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">Geophysical Survey
+    </dc:subject>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">grid</dc:subject>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">1092</dc:subject>
+    <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">
+        geoscientificInformation
+    </dc:subject>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">html</dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">NetCDF</dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">html</dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">NetCDF</dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">NetCDF</dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">Zipped ERS
+    </dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">html</dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">WCS</dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">WMS</dc:format>
+    <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">html</dc:format>
+    <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Geophysical
+        Acquisition &amp; Processing Section
+    </dc:creator>
+    <dc:publisher xmlns:dc="http://purl.org/dc/elements/1.1/">Commonwealth of
+        Australia (Geoscience Australia)
+    </dc:publisher>
+    <dct:abstract xmlns:dct="http://purl.org/dc/terms/">The radiometric, or
+        gamma-ray spectrometric method, measures the natural variations in the
+        gamma-rays detected near the Earth's surface as the result of the
+        natural radioactive decay of potassium (K), uranium (U) and thorium
+        (Th). The data collected are processed via standard methods to ensure
+        the response recorded is that due only to the rocks in the ground. The
+        results produce datasets that can be interpreted to reveal the
+        geological structure of the sub-surface. The processed data is checked
+        for quality by GA geophysicists to ensure that the final data released
+        by GA are fit-for-purpose.
+        This radiometric thorium grid has a cell size of 0.000833 degrees
+        (approximately 90m) and shows thorium element concentration of the
+        Paterson Central, WA, 2005 survey. The data used to produce this grid
+        was acquired in 2006 by the WA Government, and consisted of 94362
+        line-kilometres of data at 400m line spacing and 60m terrain clearance.
+    </dct:abstract>
+    <dc:description xmlns:dc="http://purl.org/dc/elements/1.1/">The radiometric,
+        or gamma-ray spectrometric method, measures the natural variations in
+        the gamma-rays detected near the Earth's surface as the result of the
+        natural radioactive decay of potassium (K), uranium (U) and thorium
+        (Th). The data collected are processed via standard methods to ensure
+        the response recorded is that due only to the rocks in the ground. The
+        results produce datasets that can be interpreted to reveal the
+        geological structure of the sub-surface. The processed data is checked
+        for quality by GA geophysicists to ensure that the final data released
+        by GA are fit-for-purpose.
+        This radiometric thorium grid has a cell size of 0.000833 degrees
+        (approximately 90m) and shows thorium element concentration of the
+        Paterson Central, WA, 2005 survey. The data used to produce this grid
+        was acquired in 2006 by the WA Government, and consisted of 94362
+        line-kilometres of data at 400m line spacing and 60m terrain clearance.
+    </dc:description>
+    <dc:rights xmlns:dc="http://purl.org/dc/elements/1.1/">license</dc:rights>
+    <dc:rights xmlns:dc="http://purl.org/dc/elements/1.1/">license</dc:rights>
+    <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">eng</dc:language>
+    <ows:BoundingBox xmlns:ows="http://www.opengis.net/ows">
+        <ows:LowerCorner>122.761463 -23.015881</ows:LowerCorner>
+        <ows:UpperCorner>120.480709 -20.972532</ows:UpperCorner>
+    </ows:BoundingBox>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/"
+            protocol="WWW:LINK-1.0-http--link"
+            name="Digital Object Identifier for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="Digital Object Identifier for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d">
+        http://dx.doi.org/10.4225/25/58a3fc440b02f
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/" protocol="FILE:GEO"
+            name="NetCDF file on NCI filesystem for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="Fully qualified pathname of NetCDF file on NCI filesystem for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d. Users must be logged onto the NCI network to access this file system. (md5sum=070a0e5166932ff1a2906f070a9120f7)">
+        file:///g/data2/uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/rWA1092t.nc
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/"
+            protocol="WWW:LINK-1.0-http--link"
+            name="THREDDS catalog page for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="THREDDS catalog page for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d">
+        http://dapds00.nci.org.au/thredds/catalog/uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/catalog.html?dataset=uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/rWA1092t.nc
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/" protocol="NCSS"
+            name="NCSS for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="NetCDF Subset Service for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d">
+        http://dapds00.nci.org.au/thredds/ncss/grid/uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/rWA1092t.nc/dataset.html
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/"
+            protocol="WWW:LINK-1.0-http--link"
+            name="NetCDF file download via HTTP for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="NetCDF file download via HTTP for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d">
+        http://dapds00.nci.org.au/thredds/fileServer/uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/rWA1092t.nc
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/"
+            protocol="WWW:LINK-1.0-http--link"
+            name="Zipped ERS file download via HTTP for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="Zipped ERS file download via HTTP for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d">
+        http://dapds00.nci.org.au/thredds/fileServer/uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/rWA1092t.zip
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/"
+            protocol="WWW:LINK-1.0-http--opendap"
+            name="OPeNDAP for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="OPeNDAP Service for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d">
+        http://dapds00.nci.org.au/thredds/dodsC/uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/rWA1092t.nc
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/" protocol="OGC:WCS"
+            name="WCS for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="OGC Web Coverage Service for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d">
+        http://dapds00.nci.org.au/thredds/wcs/uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/rWA1092t.nc
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/" protocol="OGC:WMS"
+            name="WMS for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d"
+            description="OGC Web Mapping Service for dataset 4fc1a4a7-297c-4b39-b479-fead57c6ba8d">
+        http://dapds00.nci.org.au/thredds/wms/uc0/rr2_dev/rcb547/AWAGS_Levelled_Grids/rad_survey_grids_levelled/thorium/rWA1092t/rWA1092t.nc
+    </dc:URI>
+    <dc:URI xmlns:dc="http://purl.org/dc/elements/1.1/"
+            protocol="WWW:LINK-1.0-http--link"
+            name="Australian Geophysical Archive Data Delivery System"
+            description="Download from Geoscience Australia Geophysical Archive Data Delivery System">
+        http://www.geoscience.gov.au/cgi-bin/mapserv?map=/nas/web/ops/prod/apps/mapserver/gadds/wms_map/gadds.map
+    </dc:URI>
+</csw:Record>

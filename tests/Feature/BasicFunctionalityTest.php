@@ -3,10 +3,9 @@
 namespace MinhD\CSWClient\Feature;
 
 use MinhD\CSWClient\CSWClient;
-use MinhD\CSWClient\Request\CSWRequest;
 use MinhD\CSWClient\Utility\XML;
 
-class BasicCSWOperationTest extends \PHPUnit_Framework_TestCase
+class BasicFunctionalityTest extends \PHPUnit_Framework_TestCase
 {
     protected $url = "http://ecat.ga.gov.au/geonetwork/srv/eng/csw";
 

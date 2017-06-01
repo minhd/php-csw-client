@@ -54,11 +54,19 @@ class XML
     public static function CSWRequestWriter()
     {
         $service = new Service();
+//        $map = [];
+//        foreach (self::$namespaces as $key => $value) {
+//            $map[self::getNSURL($key)] = $value;
+//        }
         $service->namespaceMap = [
             XML::getNSURL('csw') => 'csw',
             XML::getNSURL('ogc') => 'ogc',
-            XML::getNSURL('gml') => 'gml'
+            XML::getNSURL('gml') => 'gml',
+            XML::getNSURL('gmd') => 'gmd'
         ];
+
         return $service;
     }
+
+
 }

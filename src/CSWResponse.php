@@ -2,6 +2,7 @@
 
 namespace MinhD\CSWClient;
 
+use MinhD\CSWClient\Utility\XML;
 use Psr\Http\Message\ResponseInterface;
 use Sabre\Xml\Service as XmlService;
 
@@ -21,6 +22,15 @@ class CSWResponse
     public function httpCode()
     {
         return $this->response->getStatusCode();
+    }
+
+    public function hasException()
+    {
+        $sxml = XML::getSXML($this->asXML());
+        if (count($sxml->xpath("//ows:Exception")) > 0) {
+            return true;
+        }
+        return false;
     }
 
     public function asString()
