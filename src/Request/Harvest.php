@@ -16,6 +16,14 @@ class Harvest extends CSWRequest
     {
         parent::__construct();
 
+        $this->url = $url;
+        $this->type = $type;
+
+        // mapping from namespace to url
+        if (array_key_exists($type, XML::$namespaces)) {
+            $this->type = XML::getNSURL($type);
+        }
+
         return $this->setBody($this->getBody());
     }
 
@@ -27,8 +35,10 @@ class Harvest extends CSWRequest
         $doc = $service->write(
             "{$cswNS}Harvest",
             function (Writer $writer) use ($cswNS) {
-                $writer->writeElement("Source", $this->url);
-                $writer->writeElement("ResourceType", $this->type);
+                $writer->writeAttribute("service", "CSW");
+                $writer->writeAttribute("version", "2.0.2");
+                $writer->writeElement("{$cswNS}Source", $this->url);
+                $writer->writeElement("{$cswNS}ResourceType", $this->type);
             }
         );
 

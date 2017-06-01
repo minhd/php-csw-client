@@ -86,9 +86,27 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test **/
-    public function it_should_harvest_from_wfs_correctly()
+    public function it_should_harvest_from_wfs()
     {
+        $wfsUrl = "http://www.environment.gov.au/mapping/services/ogc_services/World_Heritage_Areas/MapServer/WFSServer";
 
+        $result = $this->client->harvest($wfsUrl, 'wfs');
+
+        $sxml = XML::getSXML($result->asXML());
+        $totalInserted = (int) $sxml->xpath('//csw:totalInserted')[0];
+        $this->assertGreaterThanOrEqual(1, $totalInserted);
+    }
+
+    /** @test **/
+    public function it_should_harvest_from_wms()
+    {
+        $wfsUrl = "http://www.environment.gov.au/mapping/services/ogc_services/World_Heritage_Areas/MapServer/WMSServer";
+
+        $result = $this->client->harvest($wfsUrl, 'wms');
+
+        $sxml = XML::getSXML($result->asXML());
+        $totalInserted = (int) $sxml->xpath('//csw:totalInserted')[0];
+        $this->assertGreaterThanOrEqual(1, $totalInserted);
     }
 
     protected function setUp()

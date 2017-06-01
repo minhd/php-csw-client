@@ -13,6 +13,7 @@ use MinhD\CSWClient\Request\DescribeRecord;
 use MinhD\CSWClient\Request\GetCapabilities;
 use MinhD\CSWClient\Request\GetRecordById;
 use MinhD\CSWClient\Request\GetRecords;
+use MinhD\CSWClient\Request\Harvest;
 use MinhD\CSWClient\Request\InsertRecord;
 use MinhD\CSWClient\Utility\XML;
 
@@ -88,6 +89,11 @@ class CSWClient
     public function deleteRecord($uuid)
     {
         return $this->send(new DeleteRecord($uuid));
+    }
+
+    public function harvest($url, $type)
+    {
+        return $this->send(new Harvest($url, $type));
     }
 
     public function hasRecord($uuid)
