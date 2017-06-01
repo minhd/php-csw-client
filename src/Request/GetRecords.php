@@ -68,6 +68,7 @@ class GetRecords extends CSWRequest
             }
         );
 
+
         return $doc;
     }
 }

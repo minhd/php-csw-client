@@ -26,7 +26,7 @@ class CSWResponse
 
     public function hasException()
     {
-        $sxml = XML::getSXML($this->asXML());
+        $sxml = XML::getSXML($this->asXML(), ['ows']);
         if (count($sxml->xpath("//ows:Exception")) > 0) {
             return true;
         }
