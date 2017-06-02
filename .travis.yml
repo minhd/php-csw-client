@@ -10,7 +10,7 @@ cache:
     - $HOME/.composer/cache
 before_script:
   - docker pull minhd/docker-pycsw
-  - docker run -it -d -p 8000:8000 --name pycsw -v $TRAVIS_BUILD_DIR/resources/default.cfg:/opt/pycsw/default.cfg minhd/docker-pycsw
+  - docker run -it -d -p 8000:8000 --name pycsw -v $TRAVIS_BUILD_DIR/resources/default-sqlite.cfg:/opt/pycsw/default.cfg minhd/docker-pycsw
   - composer install
 script:
   - php --version

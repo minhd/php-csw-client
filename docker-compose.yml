@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./resources/default.cfg:/opt/pycsw/default.cfg
+      - ./resources/default-pgsql.cfg:/opt/pycsw/default.cfg
     depends_on:
       db:
         condition: service_healthy
