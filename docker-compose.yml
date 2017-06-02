@@ -1,0 +1,28 @@
+---
+version: '2.1'
+services:
+  pycsw:
+    container_name: pycsw-cswclient-test
+    image: minhd/docker-pycsw:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./resources/default.cfg:/opt/pycsw/default.cfg
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "apk add postgresql-dev && pip install psycopg2 && pycsw-admin.py -c setup_db -f default.cfg && python /opt/pycsw/pycsw/wsgi.py"
+  db:
+    container_name: postgis-cswclient-test
+    image: mdillon/postgis
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: pycsw
+    ports:
+      - "54320:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "psql -h 'localhost' -U 'postgres' -c '\\l'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
