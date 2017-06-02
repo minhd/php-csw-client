@@ -86,6 +86,12 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test **/
+    public function it_should_check_not_exists()
+    {
+        $this->assertFalse($this->client->hasRecord("not-existence_record"));
+    }
+
+    /** @test **/
     public function it_should_harvest_from_wfs()
     {
         $wfsUrl = "http://www.environment.gov.au/mapping/services/ogc_services/World_Heritage_Areas/MapServer/WFSServer";

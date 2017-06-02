@@ -20,6 +20,13 @@ class XML
         "wfs" => "http://www.opengis.net/wfs"
     ];
 
+    /**
+     * Get a SimpleXML representation with xpath namespace support
+     *
+     * @param $payload
+     * @param array $xpathNS
+     * @return \SimpleXMLElement
+     */
     public static function getSXML($payload, $xpathNS = [])
     {
         $namespaces = static::$namespaces;
@@ -27,11 +34,6 @@ class XML
         $sxml = $payload;
         if (!($sxml instanceof \SimpleXMLElement)) {
             $sxml = new \SimpleXMLElement($sxml);
-        }
-
-
-        if ($xpathNS === "*") {
-            $xpathNS = $namespaces;
         }
 
         foreach ($xpathNS as $ns) {
@@ -43,6 +45,12 @@ class XML
         return $sxml;
     }
 
+    /**
+     * Returns the namespace URL via namespace shorthand
+     *
+     * @param $ns
+     * @return mixed|null
+     */
     public static function getNSURL($ns)
     {
         $namespaces = static::$namespaces;
@@ -53,13 +61,15 @@ class XML
         return $namespaces[$ns];
     }
 
+    /**
+     * Generate a Sabre\Xml\Service for writing XML
+     * for generating CSWRequest
+     *
+     * @return Service
+     */
     public static function CSWRequestWriter()
     {
         $service = new Service();
-//        $map = [];
-//        foreach (self::$namespaces as $key => $value) {
-//            $map[self::getNSURL($key)] = $value;
-//        }
         $service->namespaceMap = [
             XML::getNSURL('csw') => 'csw',
             XML::getNSURL('ogc') => 'ogc',

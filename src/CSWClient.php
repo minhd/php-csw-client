@@ -38,7 +38,7 @@ class CSWClient
     public function isAccessible()
     {
         try {
-            $this->webClient->get('/');
+            $this->webClient->get('');
             return true;
         } catch (RequestException $e) {
             return false;

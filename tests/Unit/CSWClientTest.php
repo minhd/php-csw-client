@@ -13,7 +13,20 @@ class CSWClientTest extends \PHPUnit_Framework_TestCase
     public function it_should_create_new_instance()
     {
         $actual = new CSWClient($this->url);
-        $this->assertInstanceOf('\MinhD\CSWClient\CSWClient', $actual);
         $this->assertInstanceOf(CSWClient::class, $actual);
+    }
+
+    /** @test **/
+    public function it_should_check_isAccessible_correctly()
+    {
+        $client = new CSWClient("http://unknown-url");
+        $this->assertFalse($client->isAccessible());
+    }
+
+    /** @test **/
+    public function it_should_check_isAccessible()
+    {
+        $client = new CSWClient($this->url);
+        $this->assertTrue($client->isAccessible());
     }
 }
